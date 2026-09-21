@@ -15,7 +15,7 @@ export const registerValidator = [
     body('password')
     .exists().withMessage("Password is required").bail()
     .isString().withMessage("password must be text").bail()
-    .custom((value) => value.trim().length < 0)
+    .custom((value) => value.trim().length > 0)
     .withMessage("Password cannot be empty or only spaces").bail()
     .isLength({min: 6}).withMessage("password must be at least 6 characters"),
 
