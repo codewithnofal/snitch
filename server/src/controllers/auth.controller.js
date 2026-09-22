@@ -92,7 +92,9 @@ export const loginController = async (req, res) => {
 }
 
 export const getMe = async (req, res) => {
-    const user = req.user;
+    const {userID, role} = req.user;
+
+    const user = await userModel.findById(userID)
 
     return res.status(200).json({
       message: "details fatched successfully",
