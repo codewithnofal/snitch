@@ -1,4 +1,4 @@
-import {body, Result, validationResult} from 'express-validator';
+import {body, validationResult} from 'express-validator';
 
 export const registerValidator = [
     body("email")
@@ -33,5 +33,30 @@ export const registerValidator = [
     }
 ]
 
+export const loginValidator = [
+    body("email")
+    .exists().withMessage("Email is required").bail()
+    .isString().withMessage("Email must be text").bail()
+    .trim()
+    .isEmail().withMessage("Enter a valid email address").bail()
+    .toLowerCase(),
 
+    body('password')
+    .exists().withMessage("Password is Required")
+    .isString().withMessage("password must be text").bail()
+    .custom((value) => value.trim().length > 0)
+    .withMessage("Password cannot be empty or only spaces").bail()
+    .isLength({min: 6}).withMessage("password must be at least 6 characters"),
 
+    (req, res, next) => {
+        const errors = validationResult(req);
+
+        if(!errors.isEmpty()){
+            return res.status(400).json({
+                message: "invalid values",
+                errors: errors.array()
+            })
+        }
+        next()
+    }
+]

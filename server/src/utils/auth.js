@@ -11,3 +11,8 @@ export const tokensGenerator = ({userID, role}) => {
     }
 
 }
+
+export const verifyAccessToken = (token) => {
+    const decoded = jwt.verify(token, config.ACCESS_TOKEN_SECRET)
+    return decoded;
+}
