@@ -4,6 +4,7 @@ import { loginValidator, registerValidator } from '../validators/auth.validator.
 import { authanticate } from '../middlewares/auth.middleware.js';
 
 
+
 const router = Router();
 
 router.post('/register',registerValidator, registerController)
