@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 import { tokensGenerator, verifyRefreshToken } from "../utils/auth.js";
 
 export const registerController = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, role } = req.body;
 
   const isUserExist = await userModel.findOne({ email });
 
@@ -23,6 +23,7 @@ export const registerController = async (req, res) => {
     name,
     email,
     hashPassword: await bcrypt.hash(password, 12),
+    role
   });
 
   const { accessToken, refreshToken } = tokensGenerator({
