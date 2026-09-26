@@ -19,10 +19,17 @@ export const createProductController = async (req, res) => {
     const product = await productModel.create({
         title: req.body.title,
         description: req.body.description,
-        
+        price: {
+            amount: req.body.price.amount,
+            currency: req.body.price.currency
+        },
+        sizes: req.body.sizes,
+        images: imageUrls,
+        seller: req.user.userID
     })
 
-    res.status(200).json({
-        message: "dummy product created"
+    res.status(201).json({
+        message: "Product Created Successfully",
+        data: product
     })
 }
