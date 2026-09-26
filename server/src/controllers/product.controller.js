@@ -1,3 +1,4 @@
+import productModel from "../models/product.model.js";
 import { uploadFiles } from "../services/storage.service.js"
 
 export const createProductController = async (req, res) => {
@@ -12,8 +13,14 @@ export const createProductController = async (req, res) => {
             filename: req.files[i].originalname
         })
 
-        console.log(response)
+        imageUrls.push(response.url)
     }
+
+    const product = await productModel.create({
+        title: req.body.title,
+        description: req.body.description,
+        
+    })
 
     res.status(200).json({
         message: "dummy product created"
