@@ -15,7 +15,6 @@ export const addToCartValidator = [
         .isString().withMessage("size must be a string").bail()
         .isIn(['XS', 'S', 'M', 'L', 'XL', 'XXL']).withMessage('Size must be one of XS, S, M, L, XL, XXL'),
 
-
         (req, res, next) => {
             const errors = validationResult(req)
 
