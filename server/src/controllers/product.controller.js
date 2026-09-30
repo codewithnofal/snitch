@@ -2,8 +2,6 @@ import productModel from "../models/product.model.js";
 import { uploadFiles } from "../services/storage.service.js"
 
 export const createProductController = async (req, res) => {
-    console.log(req.body)
-    console.log(req.files)
 
     let imageUrls = [];
 
