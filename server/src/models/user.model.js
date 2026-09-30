@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
     },
     refreshToken: {
         type: String,
+    },
+    published: {
+        type: Boolean,
+        default: false
     }
 })
 
