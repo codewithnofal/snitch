@@ -24,7 +24,6 @@ export const addToCartValidator = [
                     errors: errors.array()
                 })
             }
-        
             next()
         }
 ]
