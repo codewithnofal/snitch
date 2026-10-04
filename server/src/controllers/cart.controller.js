@@ -18,7 +18,6 @@ export const addToCartController = async (req, res) => {
             message: "Invalid size"
         })
     }
-
     if(selectedSize.stock < quantity){
         return res.status(400).json({
             message: "insufficiant stock"
