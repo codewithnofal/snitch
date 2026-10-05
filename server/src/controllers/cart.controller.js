@@ -10,8 +10,7 @@ export const addToCartController = async (req, res) => {
             message: "Product Not Found"
         })
     }
-
-    const selectedSize = product.sizes.find(s => s.size === size)
+    const selectedSize = product.sizes.find(s => s.size === size);
 
     if(!selectedSize){
         return res.status(400).json({
@@ -20,7 +19,7 @@ export const addToCartController = async (req, res) => {
     }
     if(selectedSize.stock < quantity){
         return res.status(400).json({
-            message: "insufficiant stock"
+            message: "insufficiant stock",
         })
     }
 
